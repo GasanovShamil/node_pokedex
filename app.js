@@ -21,7 +21,7 @@ var swaggerDefinition = {
         version: '1.0.0',
         description: 'Demonstrating how to describe a RESTful API with Swagger',
     },
-    host: 'http://pokedex.gasanov.fr',
+    host: 'pokedex.gasanov.fr',
     basePath: '/',
 };
 
