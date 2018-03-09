@@ -17,6 +17,14 @@ mongoose.connect('mongodb://localhost:27017/pokedex');
  *     responses:
  *       200:
  *         description: An array of pokemons
+ *         example:
+ *           name: 'Bulbasaur'
+ *           type: 'Poison'
+ *           level: 16
+ *           img: 'http://imageOfBulbasaur.com'
+ *           evolution:
+ *             evolutionLevel: 22
+ *             evolutionName: 'Ivysaur'
  */
 router.get('/', function(req, res) {
     pokemonModel.find(function (err, pokemons) {
@@ -45,6 +53,14 @@ router.get('/', function(req, res) {
  *     responses:
  *       200:
  *         description: A single Pokemon
+ *         example:
+ *           name: 'Bulbasaur'
+ *           type: 'Poison'
+ *           level: 16
+ *           img: 'http://imageOfBulbasaur.com'
+ *           evolution:
+ *             evolutionLevel: 22
+ *             evolutionName: 'Ivysaur'
  */
 router.get('/:id', function(req, res) {
     let id = req.params.id;
@@ -56,7 +72,6 @@ router.get('/:id', function(req, res) {
     });
 });
 
-/* Create a pokemon */
 router.post('/', function(req, res) {
     let addPokemon = req.body;
     pokemonModel.create(addPokemon, function (err) {
@@ -95,7 +110,25 @@ router.patch('/:id', function(req, res) {
     });
 });
 
-/* Delete a pokemon */
+/**
+ * @swagger
+ * /pokemons/{id}:
+ *   delete:
+ *     tags:
+ *       - Pokemons
+ *     description: Delete a single Pokemon
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         description: Pokemons's id
+ *         in: path
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Ok
+ */
 router.delete('/:id', function(req, res) {
     let id = req.params.id;
     pokemonModel.findOneAndRemove({_id:id}, function(err){
