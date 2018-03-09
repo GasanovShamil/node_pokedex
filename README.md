@@ -1,10 +1,14 @@
 # node_pokedex
 
 La version locale se trouve sur la branche master.
-La version hébergée sur le cloud se trouve sur la branche cloud.
+La version hébergée sur le cloud se trouve sur la branche cloud_v2.
 
 Lien de déploiement : http://pokedex.gasanov.fr/
 Lien du swagger : http://pokedex.gasanov.fr/api_docs/
+
+Installation :
+- Cloner le projet
+- Lancer la commande "npm update"
 
 Postman :
 - Lancer Postman
