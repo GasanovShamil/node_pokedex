@@ -50,11 +50,12 @@ router.get('/', function(req, res) {
 // Get All Users' pokemons
 router.get('/pokemons', function(req, res) {
     let idUser = req.loggedUser._id;
-    userModel.find({_id:idUser}, function(err, user){
+    userModel.findOne({_id:idUser}, function(err, user){
+        console.log(user);
         if (err)
             res.json({status:'error',message:err});
         else{
-            let pokemonIds = user[0].pokemonCaptured;
+            let pokemonIds = user.pokemonCaptured;
             pokemonModel.find({_id:{ $in: pokemonIds}}, (err, pokemons) => {
                 if (err)
                     res.json({status:'error',message:err});
